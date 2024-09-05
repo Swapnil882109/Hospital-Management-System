@@ -1,0 +1,228 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('hop.jpg'); /* Replace with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    position: relative;
+}
+    body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0); /* White overlay with 50% opacity */
+    pointer-events: none; /* Allows interaction with elements underneath */
+}
+
+        header, footer {
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .search-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .search-container select {
+            width: 100%;
+            max-width: 400px; /* Adjust as needed */
+        }
+        .section-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .section-container .section {
+            flex: 1;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .options-container label {
+            margin-bottom: 10px; /* Space between options */
+        }
+        .spacing {
+            margin-top: 20px;
+        }
+        .scrollable-container {
+            width: 600px; /* Set the width as needed */
+            height: 150px; /* Set the height as needed */
+            overflow: auto; /* Adds scrollbars as needed */
+            border: 1px solid #ccc;
+        }
+        .dropdown-menu {
+            background-color: #ffffff; /* Solid white background */
+            opacity: 1; /* Fully opaque */
+            /* Other styles */
+        }
+        .view-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .google-maps-link {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Complete Your Registration</h1>
+    </header>
+    
+    <section id="Book Appointment">
+        <form id="appointment-form">
+            <div class="section-container">
+                <div class="section">
+                    <h2>Choose Your City Zone</h2>
+                    <div class="options-container">
+                        <label><input type="radio" name="zone" value="North"> North Zone</label>
+                        <label><input type="radio" name="zone" value="South"> South Zone</label>
+                        <label><input type="radio" name="zone" value="East"> East Zone</label>
+                        <label><input type="radio" name="zone" value="West"> West Zone</label>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>Category of Beds</h2>
+                    <div class="options-container">
+                        <label><input type="radio" name="bed" value="General"> General</label>
+                        <label><input type="radio" name="bed" value="ICU"> ICU</label>
+                        <label><input type="radio" name="bed" value="OPD"> OPD</label>
+                        <label><input type="radio" name="bed" value="Ventilators"> Ventilators</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="spacing"></div> <!-- Line spacing after Category of Beds -->
+
+            <div class="search-container">
+                <label for="hospital-search">Select Hospital:</label>
+                <div class="input-group">
+                    <select id="hospital-search">
+                        <option value="">Select Hospital</option>
+                        <option value="Ambedkar Nagar Hospital">Ambedkar Nagar Hospital</option>
+                        <option value="Deen Dayal Upadhyay Hospital">Deen Dayal Upadhyay Hospital</option>
+                        <option value="Indira Gandhi Hospital">Indira Gandhi Hospital</option>
+                        <option value="Lal Bahadur Shastri Hospital">Lal Bahadur Shastri Hospital</option>
+                        <option value="Nehru Homeopathic Medical College and Hospital">Nehru Homeopathic Medical College and Hospital</option>
+                    </select>
+                    <button type="button" id="submit-hospital">Submit</button>
+                </div>
+            </div>
+
+            <div class="scrollable-container">
+                <table id="hospital-table">
+                    <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Hospital Name</th>
+                            <th>Occupied Beds</th>
+                            <th>Available Beds</th>
+                            <th>Doctors Availability</th>
+                            <th>Google Maps</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added dynamically here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="button-container">
+                <button type="button" onclick="window.location.href='index.html'">Back</button>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 Hospital OPD. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hospitalData = {
+            'Ambedkar Nagar Hospital': { occupiedBeds: 30, availableBeds: 10 },
+            'Deen Dayal Upadhyay Hospital': { occupiedBeds: 40, availableBeds: 20 },
+            'Indira Gandhi Hospital': { occupiedBeds: 20, availableBeds: 25 },
+            'Lal Bahadur Shastri Hospital': { occupiedBeds: 50, availableBeds: 15 },
+            'Nehru Homeopathic Medical College and Hospital': { occupiedBeds: 25, availableBeds: 30 }
+        };
+
+        document.getElementById('submit-hospital').addEventListener('click', function() {
+            const selectedHospital = document.getElementById('hospital-search').value;
+            const tableBody = document.querySelector('#hospital-table tbody');
+
+            // Clear existing rows
+            tableBody.innerHTML = '';
+
+            if (selectedHospital) {
+                const data = hospitalData[selectedHospital];
+                if (data) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>1</td>
+                        <td>${selectedHospital}</td>
+                        <td>${data.occupiedBeds}</td>
+                        <td>${data.availableBeds}</td>
+                        <td><a href="doctors-availability.html" class="view-button">View</a></td>
+                        <td><a href="https://www.google.com/maps/search/${encodeURIComponent(selectedHospital)}" target="_blank" class="google-maps-link">Search</a></td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

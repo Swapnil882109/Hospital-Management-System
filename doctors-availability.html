@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Availability</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(248, 248, 248, 0.144); /* White overlay with 50% opacity */
+    pointer-events: none; /* Allows interaction with elements underneath */
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header, footer {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+        table, th, td {
+            border: 1px solid rgb(0, 0, 0);
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            background-color: #ffffff;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Doctors Availability</h1>
+    </header>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Specialty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dr. Naresh singh</td>
+                <td>Cardiology</td>
+            </tr>
+            <tr>
+                <td>Dr. Suresh joshi</td>
+                <td>Neurology</td>
+            </tr>
+            <tr>
+                <td>Dr. Aradhya</td>
+                <td>Orthopedics</td>
+            </tr>
+            <tr>
+                <td>Dr. Priya desai</td>
+                <td>Gynecology</td>
+            </tr>
+            <tr>
+                <td>Dr. Anubhav joshi</td>
+                <td>Dermatology</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <button onclick="window.history.back()">Back</
